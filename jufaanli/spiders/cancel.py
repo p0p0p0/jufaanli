@@ -14,10 +14,10 @@ from redis import Redis, ConnectionPool
 
 
 class CollectSpider(scrapy.Spider):
-    name = 'collect'
+    name = 'cancel'
     allowed_domains = ['www.jufaanli.com']
     custom_settings = {
-        # "LOG_LEVEL": "DEBUG",
+        "LOG_LEVEL": "DEBUG",
     }
     settings = get_project_settings()
     redis_host = settings.get("REDIS_HOST")
@@ -29,12 +29,14 @@ class CollectSpider(scrapy.Spider):
     pool = ConnectionPool(host=redis_host, port=redis_port, db=0)
     r = Redis(connection_pool=pool)
 
-    base_url = "https://www.jufaanli.com/home/Collection/collectCases"
-    label_id = "257689"
+    base_url = "https://www.jufaanli.com/home/Collection/cancelCollect"
+    label_id = "undefined"
 
     def start_requests(self):
-        for i in range(10000000):
-            payload = {"case_id": str(i), "label_id": self.label_id}
+        crawled = self.r.smembers("jufaanli:crawled")
+        for each in crawled:
+            case_id = str(each, encoding="utf-8")
+            payload = {"case_id": case_id, "label_id": self.label_id}
             yield Request(
                 url=self.base_url,
                 method="POST",
@@ -44,4 +46,4 @@ class CollectSpider(scrapy.Spider):
     def parse(self, response):
         res = json.loads(response.body_as_unicode())
         if 0 != res:
-            self.r.sadd("jufaanli:collect_msg", res)
+            self.r.sadd("jufaanli:cancel_msg", res)

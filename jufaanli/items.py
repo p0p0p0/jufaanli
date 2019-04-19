@@ -8,7 +8,7 @@
 import scrapy
 
 
-class JufaanliItem(scrapy.Item):
+class CaseItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    case = scrapy.Field()

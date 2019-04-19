@@ -12,12 +12,21 @@ from scrapy.utils.project import get_project_settings
 from scrapy.exceptions import CloseSpider
 from redis import Redis, ConnectionPool
 
+from jufaanli.items import CaseItem
+
 
 class CollectSpider(scrapy.Spider):
-    name = 'collect'
+    name = 'case'
     allowed_domains = ['www.jufaanli.com']
     custom_settings = {
         # "LOG_LEVEL": "DEBUG",
+        # "DOWNLOADER_MIDDLEWARES": {
+        #     # "jufaanli.middlewares.ProxyMiddleware": 543,
+        #     # "jufaanli.middlewares.JufaanliDownloaderMiddleware": 534
+        # },
+        "ITEM_PIPELINES": {
+            'jufaanli.pipelines.CasePipeline': 300,
+        }
     }
     settings = get_project_settings()
     redis_host = settings.get("REDIS_HOST")
@@ -29,19 +38,19 @@ class CollectSpider(scrapy.Spider):
     pool = ConnectionPool(host=redis_host, port=redis_port, db=0)
     r = Redis(connection_pool=pool)
 
-    base_url = "https://www.jufaanli.com/home/Collection/collectCases"
-    label_id = "257689"
+    base_url = "https://www.jufaanli.com/home/Collection/showAllCollection"
 
     def start_requests(self):
-        for i in range(10000000):
-            payload = {"case_id": str(i), "label_id": self.label_id}
+        for i in range(100):
+            payload = {"page": i+1}
             yield Request(
                 url=self.base_url,
                 method="POST",
-                body=urlencode(payload)
+                body=urlencode(payload),
             )
 
     def parse(self, response):
         res = json.loads(response.body_as_unicode())
-        if 0 != res:
-            self.r.sadd("jufaanli:collect_msg", res)
+        case_list = res.get("case_list", None)
+        for case in case_list:
+            yield CaseItem(case=case)

@@ -16,13 +16,13 @@ NEWSPIDER_MODULE = 'jufaanli.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'jufaanli (+http://www.yourdomain.com)'
+USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3766.2 Safari/537.36'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-#CONCURRENT_REQUESTS = 32
+# CONCURRENT_REQUESTS = 32
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
@@ -33,16 +33,26 @@ ROBOTSTXT_OBEY = True
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-#COOKIES_ENABLED = False
+COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-#DEFAULT_REQUEST_HEADERS = {
-#   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-#   'Accept-Language': 'en',
-#}
+DEFAULT_REQUEST_HEADERS = {
+    "accept": "application/json, text/javascript, */*; q=0.01",
+    "accept-encoding": "gzip, deflate, br",
+    "accept-language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
+    "cache-control": "no-cache",
+    "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+    "cookie": "t=786c59fca9efb3deca7fa740e544fdf7; BJYSESSION=39qh046364mhugnk7vb565k3u2; is_remember=0; BJYSESSION=39qh046364mhugnk7vb565k3u2; login_time=2019-04-19+20%3A34%3A32; keywords=%E7%A6%BB%E5%A9%9A; tf=0d89f28163e5819e410aa9326a19e483",
+    "dnt": "1",
+    "origin": "https://www.jufaanli.com",
+    "pragma": "no-cache",
+    "referer": "https://www.jufaanli.com/",
+    "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3766.2 Safari/537.36",
+    "x-requested-with": "XMLHttpRequest",
+}
 
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
@@ -88,3 +98,12 @@ ROBOTSTXT_OBEY = True
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+# RETRY_ENABLED = False
+REDIS_HOST = "localhost"
+REDIS_PORT = 6379
+LOG_LEVEL = "INFO"
+
+# abuyun proxy
+PROXY_SERVER = "http://http-dyn.abuyun.com:9020"
+PROXY_USER = "HQ5867J9S14TT6WD"
+PROXY_PASS = "ECB6CB605C5B3169"
