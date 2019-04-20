@@ -33,7 +33,7 @@ class CollectSpider(scrapy.Spider):
     label_id = "257689"
 
     def start_requests(self):
-        for i in range(10000000):
+        for i in range(60000000, 60000010):
             payload = {"case_id": str(i), "label_id": self.label_id}
             yield Request(
                 url=self.base_url,

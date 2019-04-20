@@ -24,6 +24,16 @@ class CollectSpider(scrapy.Spider):
         #     # "jufaanli.middlewares.ProxyMiddleware": 543,
         #     # "jufaanli.middlewares.JufaanliDownloaderMiddleware": 534
         # },
+        "DEFAULT_REQUEST_HEADERS": {
+            'Charset': 'UTF-8',
+            'User-Agent': 'jufaanli/3.0.1 (iPhone; iOS 10.3.2; Scale/2.00)v',
+            'Accept-Encoding': 'gzip, deflate',
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Connection': 'keep-alive',
+            'Cookie': 'tf=2971f014c92d530eb10cc6412c9a979f; t=8c36a7c25995731e57250bf357929467; BJYSESSION=1td6ku7qdjifphb18pib6qav40',
+            'Accept-Language': 'zh-Hans-CN;q=1, en-US;q=0.9',
+
+        },
         "ITEM_PIPELINES": {
             'jufaanli.pipelines.CasePipeline': 300,
         }
@@ -38,11 +48,15 @@ class CollectSpider(scrapy.Spider):
     pool = ConnectionPool(host=redis_host, port=redis_port, db=0)
     r = Redis(connection_pool=pool)
 
-    base_url = "https://www.jufaanli.com/home/Collection/showAllCollection"
+    base_url = "https://www.jufaanli.com/JuFaMobile/User/collect?sign=14463aceb56ff73945004523425d4230&version_no=3.0.1"
 
     def start_requests(self):
-        for i in range(100):
-            payload = {"page": i+1}
+        for i in range(2,3):
+            payload = {
+                "page": i,
+                "uid": "175648",
+                "version_no": "3.0.1",
+		    }
             yield Request(
                 url=self.base_url,
                 method="POST",
@@ -51,6 +65,9 @@ class CollectSpider(scrapy.Spider):
 
     def parse(self, response):
         res = json.loads(response.body_as_unicode())
-        case_list = res.get("case_list", None)
-        for case in case_list:
-            yield CaseItem(case=case)
+        print(res)
+        code = res.get("code", 0)
+        if 200 == code:
+            data = res.get("data", None)
+            for case in data:
+                yield CaseItem(case=case)

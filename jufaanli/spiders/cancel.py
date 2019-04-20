@@ -35,6 +35,7 @@ class CollectSpider(scrapy.Spider):
     def start_requests(self):
         crawled = self.r.smembers("jufaanli:crawled")
         for each in crawled:
+        # for i in range(1, 4000):
             case_id = str(each, encoding="utf-8")
             payload = {"case_id": case_id, "label_id": self.label_id}
             yield Request(

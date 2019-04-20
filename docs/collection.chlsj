@@ -1,0 +1,142 @@
+[{
+	"status": "COMPLETE",
+	"method": "POST",
+	"protocolVersion": "HTTP/1.1",
+	"scheme": "https",
+	"host": "www.jufaanli.com",
+	"port": null,
+	"actualPort": 443,
+	"path": "/JuFaMobile/User/collect",
+	"query": "sign=df13cc3b1b2c2483b8a1bd3aaa03de77&version_no=3.0.1",
+	"tunnel": false,
+	"keptAlive": true,
+	"webSocket": false,
+	"remoteAddress": "www.jufaanli.com/39.96.206.249",
+	"clientAddress": "/192.168.1.2",
+	"clientPort": 59511,
+	"times": {
+		"start": "2019-04-20T11:19:21.408+08:00",
+		"requestBegin": "2019-04-20T11:19:21.409+08:00",
+		"requestComplete": "2019-04-20T11:19:21.409+08:00",
+		"responseBegin": "2019-04-20T11:19:21.458+08:00",
+		"end": "2019-04-20T11:19:21.460+08:00"
+	},
+	"durations": {
+		"total": 51,
+		"dns": null,
+		"connect": null,
+		"ssl": null,
+		"request": 0,
+		"response": 2,
+		"latency": 49
+	},
+	"speeds": {
+		"overall": "26921",
+		"request": "0",
+		"response": "426500"
+	},
+	"totalSize": "1373",
+	"ssl": {
+		"protocol": "TLSv1.2",
+		"cipherSuite": "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
+	},
+	"alpn": {
+		"protocol": "http/1.1"
+	},
+	"request": {
+		"sizes": {
+			"headers": 486,
+			"body": 34
+		},
+		"mimeType": "application/x-www-form-urlencoded",
+		"charset": null,
+		"contentEncoding": null,
+		"header": {
+			"firstLine": "POST /JuFaMobile/User/collect?sign=df13cc3b1b2c2483b8a1bd3aaa03de77&version_no=3.0.1 HTTP/1.1",
+			"headers": [{
+				"name": "Host",
+				"value": "www.jufaanli.com"
+			}, {
+				"name": "Content-Type",
+				"value": "application/x-www-form-urlencoded"
+			}, {
+				"name": "Accept",
+				"value": "*/*"
+			}, {
+				"name": "Connection",
+				"value": "keep-alive"
+			}, {
+				"name": "Cookie",
+				"value": "tf=2971f014c92d530eb10cc6412c9a979f; t=8c36a7c25995731e57250bf357929467; BJYSESSION=1td6ku7qdjifphb18pib6qav40"
+			}, {
+				"name": "User-Agent",
+				"value": "jufaanli/3.0.1 (iPhone; iOS 10.3.2; Scale/2.00)"
+			}, {
+				"name": "Accept-Language",
+				"value": "zh-Hans-CN;q=1, en-US;q=0.9"
+			}, {
+				"name": "Accept-Encoding",
+				"value": "gzip, deflate"
+			}, {
+				"name": "Content-Length",
+				"value": "34"
+			}]
+		},
+		"body": {
+			"text": "page=1&uid=175648&version_no=3.0.1",
+			"charset": null
+		}
+	},
+	"response": {
+		"status": 200,
+		"sizes": {
+			"headers": 0,
+			"body": 853
+		},
+		"mimeType": "application/json",
+		"charset": "utf-8",
+		"contentEncoding": "gzip",
+		"header": {
+			"firstLine": "HTTP/1.1 200 OK",
+			"headers": [{
+				"name": "Server",
+				"value": "openresty"
+			}, {
+				"name": "Date",
+				"value": "Sat, 20 Apr 2019 03:19:21 GMT"
+			}, {
+				"name": "Content-Type",
+				"value": "application/json; charset=utf-8"
+			}, {
+				"name": "Vary",
+				"value": "Accept-Encoding"
+			}, {
+				"name": "Expires",
+				"value": "Thu, 19 Nov 1981 08:52:00 GMT"
+			}, {
+				"name": "Cache-Control",
+				"value": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0"
+			}, {
+				"name": "Pragma",
+				"value": "no-cache"
+			}, {
+				"name": "Strict-Transport-Security",
+				"value": "max-age=15768000"
+			}, {
+				"name": "Content-Encoding",
+				"value": "gzip"
+			}, {
+				"name": "Transfer-Encoding",
+				"value": "chunked"
+			}, {
+				"name": "Connection",
+				"value": "Keep-alive"
+			}]
+		},
+		"body": {
+			"text": "{\"data\":[{\"case_id\":\"67859537\",\"id\":\"71770\",\"time\":\"2019-04-20 03:12:32\",\"title\":\"\\u5f20\\u7434\\u8bc9\\u9547\\u6c5f\\u5e02\\u59da\\u6865\\u9547\\u8fce\\u5317\\u6751\\u6751\\u6c11\\u59d4\\u5458\\u4f1a\\u64a4\\u9500\\u76d1\\u62a4\\u4eba\\u8d44\\u683c\\u7ea0\\u7eb7\\u6848\",\"case_no\":\"\",\"trial_round\":\"\\u4e8c\\u5ba1\",\"case_type\":\"\\u6c11\\u4e8b\",\"judgement_type\":\"\\u5224\\u51b3\",\"court_name\":\"\\u9547\\u6c5f\\u7ecf\\u6d4e\\u5f00\\u53d1\\u533a\\u4eba\\u6c11\\u6cd5\\u9662\",\"url\":\"https:\\/\\/www.jufaanli.com\\/wenshu\\/88481b87f7a011e8a19d00163e10149a\\/?src=collect&version_no=3.0.0\"},{\"case_id\":\"10827\",\"id\":\"71764\",\"time\":\"2019-04-20 00:41:53\",\"title\":\"\\u5f20\\u5a1c\\u7684\\u5211\\u4e8b\\u88c1\\u5b9a\\u4e66\",\"case_no\":\"\\uff082014\\uff09\\u957f\\u4e2d\\u5211\\u6267\\u5b57\\u7b2c03548\\u53f7\",\"trial_round\":\"\\u4e00\\u5ba1\",\"case_type\":\"\\u5211\\u4e8b\",\"judgement_type\":\"\\u88c1\\u5b9a\",\"court_name\":\"\\u957f\\u6c99\\u5e02\\u4e2d\\u7ea7\\u4eba\\u6c11\\u6cd5\\u9662\",\"url\":\"https:\\/\\/www.jufaanli.com\\/wenshu\\/\\/?src=collect&version_no=3.0.0\"},{\"case_id\":\"10685\",\"id\":\"71630\",\"time\":\"2019-04-20 00:41:47\",\"title\":\"\\u5eb7\\u6656\\u7684\\u5211\\u4e8b\\u88c1\\u5b9a\\u4e66\",\"case_no\":\"\\uff082014\\uff09\\u957f\\u4e2d\\u5211\\u6267\\u5b57\\u7b2c3434\\u53f7\",\"trial_round\":\"\\u4e00\\u5ba1\",\"case_type\":\"\\u5211\\u4e8b\",\"judgement_type\":\"\\u88c1\\u5b9a\",\"court_name\":\"\\u957f\\u6c99\\u5e02\\u4e2d\\u7ea7\\u4eba\\u6c11\\u6cd5\\u9662\",\"url\":\"https:\\/\\/www.jufaanli.com\\/wenshu\\/\\/?src=collect&version_no=3.0.0\"},{\"case_id\":\"10686\",\"id\":\"71631\",\"time\":\"2019-04-20 00:41:47\",\"title\":\"\\u5ed6\\u7f8e\\u971e\\u7684\\u5211\\u4e8b\\u88c1\\u5b9a\\u4e66\",\"case_no\":\"\\uff082014\\uff09\\u957f\\u4e2d\\u5211\\u6267\\u5b57\\u7b2c03551\\u53f7\",\"trial_round\":\"\\u4e00\\u5ba1\",\"case_type\":\"\\u5211\\u4e8b\",\"judgement_type\":\"\\u88c1\\u5b9a\",\"court_name\":\"\\u957f\\u6c99\\u5e02\\u4e2d\\u7ea7\\u4eba\\u6c11\\u6cd5\\u9662\",\"url\":\"https:\\/\\/www.jufaanli.com\\/wenshu\\/\\/?src=collect&version_no=3.0.0\"},{\"case_id\":\"10673\",\"id\":\"71621\",\"time\":\"2019-04-20 00:41:46\",\"title\":\"\\u59da\\u91d1\\u9601\\u7684\\u5211\\u4e8b\\u88c1\\u5b9a\\u4e66\",\"case_no\":\"\\uff082014\\uff09\\u957f\\u4e2d\\u5211\\u6267\\u5b57\\u7b2c03555\\u53f7\",\"trial_round\":\"\\u4e00\\u5ba1\",\"case_type\":\"\\u5211\\u4e8b\",\"judgement_type\":\"\\u88c1\\u5b9a\",\"court_name\":\"\\u957f\\u6c99\\u5e02\\u4e2d\\u7ea7\\u4eba\\u6c11\\u6cd5\\u9662\",\"url\":\"https:\\/\\/www.jufaanli.com\\/wenshu\\/\\/?src=collect&version_no=3.0.0\"},{\"case_id\":\"10580\",\"id\":\"71537\",\"time\":\"2019-04-20 00:41:43\",\"title\":\"\\u5434\\u5bb6\\u6842\\u7684\\u5211\\u4e8b\\u88c1\\u5b9a\\u4e66\",\"case_no\":\"\\uff082014\\uff09\\u957f\\u4e2d\\u5211\\u6267\\u5b57\\u7b2c03581\\u53f7\",\"trial_round\":\"\\u6267\\u884c\",\"case_type\":\"\\u5211\\u4e8b\",\"judgement_type\":\"\\u88c1\\u5b9a\",\"court_name\":\"\\u957f\\u6c99\\u5e02\\u4e2d\\u7ea7\\u4eba\\u6c11\\u6cd5\\u9662\",\"url\":\"https:\\/\\/www.jufaanli.com\\/wenshu\\/\\/?src=collect&version_no=3.0.0\"},{\"case_id\":\"10570\",\"id\":\"71529\",\"time\":\"2019-04-20 00:41:43\",\"title\":\"\\u535c\\u4e94\\u6708\\u7684\\u5211\\u4e8b\\u88c1\\u5b9a\\u4e66\",\"case_no\":\"\\uff082014\\uff09\\u957f\\u4e2d\\u5211\\u6267\\u5b57\\u7b2c03557\\u53f7\",\"trial_round\":\"\\u6267\\u884c\",\"case_type\":\"\\u5211\\u4e8b\",\"judgement_type\":\"\\u88c1\\u5b9a\",\"court_name\":\"\\u957f\\u6c99\\u5e02\\u4e2d\\u7ea7\\u4eba\\u6c11\\u6cd5\\u9662\",\"url\":\"https:\\/\\/www.jufaanli.com\\/wenshu\\/\\/?src=collect&version_no=3.0.0\"},{\"case_id\":\"10063\",\"id\":\"71094\",\"time\":\"2019-04-20 00:41:25\",\"title\":\"\\u4e0a\\u8bc9\\u4eba\\u5f20\\u5c0f\\u519b\\u4e0e\\u88ab\\u4e0a\\u8bc9\\u4eba\\u674e\\u7ecd\\u559c\\u5408\\u4f19\\u534f\\u8bae\\u7ea0\\u7eb7\\u6c11\\u4e8b\\u5224\\u51b3\\u4e66\",\"case_no\":\"\\uff082014\\uff09\\u8861\\u4e2d\\u6cd5\\u6c11\\u4e09\\u7ec8\\u7b2c131\\u53f7\",\"trial_round\":\"\\u4e8c\\u5ba1\",\"case_type\":\"\\u6c11\\u4e8b\",\"judgement_type\":\"\\u5224\\u51b3\",\"court_name\":\"\\u8861\\u9633\\u5e02\\u4e2d\\u7ea7\\u4eba\\u6c11\\u6cd5\\u9662\",\"url\":\"https:\\/\\/www.jufaanli.com\\/wenshu\\/\\/?src=collect&version_no=3.0.0\"},{\"case_id\":\"9965\",\"id\":\"71010\",\"time\":\"2019-04-20 00:41:22\",\"title\":\"\\u4e0a\\u8bc9\\u4eba\\u5321\\u7ea2\\u59b9\\u4e0e\\u88ab\\u4e0a\\u8bc9\\u4eba\\u4ed8\\u82cf\\u5e73\\u79bb\\u5a5a\\u7ea0\\u7eb7\\u4e8c\\u5ba1\\u6c11\\u4e8b\\u88c1\\u5b9a\\u4e66\",\"case_no\":\"\\uff082014\\uff09\\u8861\\u4e2d\\u6cd5\\u7acb\\u7ba1\\u7ec8\\u5b57\\u7b2c156\\u53f7\",\"trial_round\":\"\\u4e8c\\u5ba1\",\"case_type\":\"\\u6c11\\u4e8b\",\"judgement_type\":\"\\u88c1\\u5b9a\",\"court_name\":\"\\u8861\\u9633\\u5e02\\u4e2d\\u7ea7\\u4eba\\u6c11\\u6cd5\\u9662\",\"url\":\"https:\\/\\/www.jufaanli.com\\/wenshu\\/\\/?src=collect&version_no=3.0.0\"},{\"case_id\":\"9957\",\"id\":\"70996\",\"time\":\"2019-04-20 00:41:21\",\"title\":\"\\u4e0a\\u8bc9\\u4eba\\u5c48\\u83b2\\u82f1\\u786e\\u8ba4\\u5408\\u540c\\u65e0\\u6548\\u7ea0\\u7eb7\\u4e8c\\u5ba1\\u6c11\\u4e8b\\u88c1\\u5b9a\\u4e66\",\"case_no\":\"\\uff082014\\uff09\\u8861\\u4e2d\\u6cd5\\u7acb\\u7ec8\\u5b57\\u7b2c21\\u53f7\",\"trial_round\":\"\\u4e8c\\u5ba1\",\"case_type\":\"\\u6c11\\u4e8b\",\"judgement_type\":\"\\u88c1\\u5b9a\",\"court_name\":\"\\u8861\\u9633\\u5e02\\u4e2d\\u7ea7\\u4eba\\u6c11\\u6cd5\\u9662\",\"url\":\"https:\\/\\/www.jufaanli.com\\/wenshu\\/\\/?src=collect&version_no=3.0.0\"}],\"message\":\"success\",\"code\":200}",
+			"charset": "utf-8",
+			"decoded": true
+		}
+	}
+}]
