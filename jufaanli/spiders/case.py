@@ -13,13 +13,13 @@ from scrapy.exceptions import CloseSpider
 from redis import Redis, ConnectionPool
 
 from jufaanli.items import CaseItem
-
+from jufaanli.conf import pages
 
 class CollectSpider(scrapy.Spider):
     name = 'case'
     allowed_domains = ['www.jufaanli.com']
     custom_settings = {
-        # "LOG_LEVEL": "DEBUG",
+        "LOG_LEVEL": "DEBUG",
         # "DOWNLOADER_MIDDLEWARES": {
         #     # "jufaanli.middlewares.ProxyMiddleware": 543,
         #     # "jufaanli.middlewares.JufaanliDownloaderMiddleware": 534
@@ -32,7 +32,6 @@ class CollectSpider(scrapy.Spider):
             'Connection': 'keep-alive',
             'Cookie': 'tf=2971f014c92d530eb10cc6412c9a979f; t=8c36a7c25995731e57250bf357929467; BJYSESSION=1td6ku7qdjifphb18pib6qav40',
             'Accept-Language': 'zh-Hans-CN;q=1, en-US;q=0.9',
-
         },
         "ITEM_PIPELINES": {
             'jufaanli.pipelines.CasePipeline': 300,
@@ -48,26 +47,31 @@ class CollectSpider(scrapy.Spider):
     pool = ConnectionPool(host=redis_host, port=redis_port, db=0)
     r = Redis(connection_pool=pool)
 
-    base_url = "https://www.jufaanli.com/JuFaMobile/User/collect?sign=14463aceb56ff73945004523425d4230&version_no=3.0.1"
-
     def start_requests(self):
-        for i in range(2,3):
-            payload = {
-                "page": i,
-                "uid": "175648",
-                "version_no": "3.0.1",
-		    }
-            yield Request(
-                url=self.base_url,
-                method="POST",
-                body=urlencode(payload),
-            )
+        while True:
+            for i, sign in enumerate(pages, start=1):
+                url = f"https://www.jufaanli.com/JuFaMobile/User/collect?sign={sign}&version_no=3.0.1"
+                payload = {
+                    "page": i,
+                    "uid": "175648",
+                    "version_no": "3.0.1",
+                }
+                yield Request(
+                    url=url,
+                    method="POST",
+                    body=urlencode(payload),
+                    dont_filter=True
+                )
+
 
     def parse(self, response):
         res = json.loads(response.body_as_unicode())
-        print(res)
         code = res.get("code", 0)
         if 200 == code:
             data = res.get("data", None)
             for case in data:
                 yield CaseItem(case=case)
+        else:
+            raise CloseSpider()
+    
+    

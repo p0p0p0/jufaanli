@@ -33,13 +33,23 @@ class CollectSpider(scrapy.Spider):
     label_id = "257689"
 
     def start_requests(self):
-        for i in range(60000000, 60000010):
-            payload = {"case_id": str(i), "label_id": self.label_id}
-            yield Request(
-                url=self.base_url,
-                method="POST",
-                body=urlencode(payload)
-            )
+        while True:
+            start = self.r.lpop("jufaanli:start")
+            for i in range(1000):
+                case_id = int(start)*1000 + i
+                payload = {"case_id": str(case_id), "label_id": self.label_id}
+                yield Request(
+                    url=self.base_url,
+                    method="POST",
+                    body=urlencode(payload),
+                    dont_filter=True
+                )
+            while True:
+                if 0 == self.r.scard("jufaanli:crawled"):
+                    break
+                else:
+                    self.logger.info("watting for cancel....")
+                    sleep(10)
 
     def parse(self, response):
         res = json.loads(response.body_as_unicode())
