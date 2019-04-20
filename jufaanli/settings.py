@@ -45,7 +45,7 @@ DEFAULT_REQUEST_HEADERS = {
     "accept-language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
     "cache-control": "no-cache",
     "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-    "cookie": "t=786c59fca9efb3deca7fa740e544fdf7; BJYSESSION=39qh046364mhugnk7vb565k3u2; is_remember=0; BJYSESSION=39qh046364mhugnk7vb565k3u2; login_time=2019-04-19+20%3A34%3A32; keywords=%E7%A6%BB%E5%A9%9A; tf=0d89f28163e5819e410aa9326a19e483",
+    "cookie": "t=786c59fca9efb3deca7fa740e544fdf7; BJYSESSION=39qh046364mhugnk7vb565k3u2; is_remember=0; BJYSESSION=39qh046364mhugnk7vb565k3u2; keywords=%E7%A6%BB%E5%A9%9A; login_time=2019-04-20+19%3A20%3A31; tf=11cc3a714602a04217a51451bd39b44f",
     "dnt": "1",
     "origin": "https://www.jufaanli.com",
     "pragma": "no-cache",

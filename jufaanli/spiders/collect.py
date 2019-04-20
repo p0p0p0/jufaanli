@@ -44,12 +44,6 @@ class CollectSpider(scrapy.Spider):
                     body=urlencode(payload),
                     dont_filter=True
                 )
-            while True:
-                if 100 > self.r.scard("jufaanli:crawled"):
-                    break
-                else:
-                    self.logger.info("watting for cancel....")
-                    sleep(10)
 
     def parse(self, response):
         res = json.loads(response.body_as_unicode())

@@ -19,7 +19,7 @@ class CollectSpider(scrapy.Spider):
     name = 'case'
     allowed_domains = ['www.jufaanli.com']
     custom_settings = {
-        # "LOG_LEVEL": "DEBUG",
+        "LOG_LEVEL": "DEBUG",
         # "DOWNLOADER_MIDDLEWARES": {
         #     # "jufaanli.middlewares.ProxyMiddleware": 543,
         #     # "jufaanli.middlewares.JufaanliDownloaderMiddleware": 534
@@ -30,7 +30,7 @@ class CollectSpider(scrapy.Spider):
             'Accept-Encoding': 'gzip, deflate',
             'Content-Type': 'application/x-www-form-urlencoded',
             'Connection': 'keep-alive',
-            'Cookie': 'tf=2971f014c92d530eb10cc6412c9a979f; t=8c36a7c25995731e57250bf357929467; BJYSESSION=1td6ku7qdjifphb18pib6qav40',
+            'Cookie': 'tf=c5455137943b642b18ee51913ec00a3d; BJYSESSION=1td6ku7qdjifphb18pib6qav40; is_remember=0; login_time=2019-04-20+15%3A10%3A57; t=8c36a7c25995731e57250bf357929467;',
             'Accept-Language': 'zh-Hans-CN;q=1, en-US;q=0.9',
         },
         "ITEM_PIPELINES": {
@@ -48,20 +48,20 @@ class CollectSpider(scrapy.Spider):
     r = Redis(connection_pool=pool)
 
     def start_requests(self):
-        while True:
-            for i, sign in enumerate(pages[:100], start=1):
-                url = f"https://www.jufaanli.com/JuFaMobile/User/collect?sign={sign}&version_no=3.0.1"
-                payload = {
-                    "page": i,
-                    "uid": "175648",
-                    "version_no": "3.0.1",
-                }
-                yield Request(
-                    url=url,
-                    method="POST",
-                    body=urlencode(payload),
-                    dont_filter=True
-                )
+        for i, sign in enumerate(pages[:], start=1):
+            url = f"https://www.jufaanli.com/JuFaMobile/User/collect?sign={sign}&version_no=3.0.1"
+            payload = {
+                "page": i,
+                "uid": "175648",
+                "version_no": "3.0.1",
+            }
+            yield Request(
+                url=url,
+                method="POST",
+                body=urlencode(payload),
+                dont_filter=True
+            )
+
 
     def parse(self, response):
         res = json.loads(response.body_as_unicode())
