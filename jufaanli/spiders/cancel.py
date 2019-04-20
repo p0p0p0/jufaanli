@@ -17,7 +17,7 @@ class CollectSpider(scrapy.Spider):
     name = 'cancel'
     allowed_domains = ['www.jufaanli.com']
     custom_settings = {
-        "LOG_LEVEL": "DEBUG",
+        # "LOG_LEVEL": "DEBUG",
     }
     settings = get_project_settings()
     redis_host = settings.get("REDIS_HOST")
@@ -35,6 +35,10 @@ class CollectSpider(scrapy.Spider):
     def start_requests(self):
         while True:
             crawled = self.r.spop("jufaanli:crawled", count=1000)
+            if not crawled:
+                sleep(1)
+                self.logger.info("waitting")
+                continue
             for each in crawled:
                 case_id = str(each, encoding="utf-8")
                 payload = {"case_id": case_id, "label_id": self.label_id}
@@ -42,13 +46,14 @@ class CollectSpider(scrapy.Spider):
                     url=self.base_url,
                     method="POST",
                     body=urlencode(payload),
+                    meta={"case_id": case_id},
                     dont_filter=True
                 )
-            self.logger.info("waitting...")
-            sleep(1)
-            
 
     def parse(self, response):
+        case_id = response.meta.get("case_id", "")
         res = json.loads(response.body_as_unicode())
         if 0 != res:
             self.r.sadd("jufaanli:cancel_msg", res)
+        else:
+            self.logger.debug(case_id)

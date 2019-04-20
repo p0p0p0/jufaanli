@@ -39,19 +39,20 @@ class CasePipeline(object):
     def process_item(self, item, spider):
         case = item['case']
         case_id = case['case_id']
+        spider.r.sadd("jufaanli:crawled", case_id)
         spider.r.sadd("jufaanli:case", json.dumps(case, ensure_ascii=False))
-        payload = {"case_id": case_id, "label_id": "undefined"}
 
-        self.crawler.engine.crawl(Request(
-                    url="https://www.jufaanli.com/home/Collection/cancelCollect",
-                    method="POST",
-                    body=urlencode(payload),
-                    dont_filter=True,
-                    callback=self.parse_cancel,
-                    headers=headers
-                ),
-                spider,
-        )
+        # payload = {"case_id": case_id, "label_id": "undefined"}
+        # self.crawler.engine.crawl(Request(
+        #             url="https://www.jufaanli.com/home/Collection/cancelCollect",
+        #             method="POST",
+        #             body=urlencode(payload),
+        #             dont_filter=True,
+        #             callback=self.parse_cancel,
+        #             headers=headers
+        #         ),
+        #         spider,
+        # )
         return item
 
     def parse_cancel(self, response):

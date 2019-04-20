@@ -19,7 +19,7 @@ class CollectSpider(scrapy.Spider):
     name = 'case'
     allowed_domains = ['www.jufaanli.com']
     custom_settings = {
-        "LOG_LEVEL": "DEBUG",
+        # "LOG_LEVEL": "DEBUG",
         # "DOWNLOADER_MIDDLEWARES": {
         #     # "jufaanli.middlewares.ProxyMiddleware": 543,
         #     # "jufaanli.middlewares.JufaanliDownloaderMiddleware": 534
@@ -49,7 +49,7 @@ class CollectSpider(scrapy.Spider):
 
     def start_requests(self):
         while True:
-            for i, sign in enumerate(pages, start=1):
+            for i, sign in enumerate(pages[:100], start=1):
                 url = f"https://www.jufaanli.com/JuFaMobile/User/collect?sign={sign}&version_no=3.0.1"
                 payload = {
                     "page": i,
@@ -63,7 +63,6 @@ class CollectSpider(scrapy.Spider):
                     dont_filter=True
                 )
 
-
     def parse(self, response):
         res = json.loads(response.body_as_unicode())
         code = res.get("code", 0)
@@ -71,7 +70,3 @@ class CollectSpider(scrapy.Spider):
             data = res.get("data", None)
             for case in data:
                 yield CaseItem(case=case)
-        else:
-            raise CloseSpider()
-    
-    

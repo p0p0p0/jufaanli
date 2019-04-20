@@ -45,7 +45,7 @@ class CollectSpider(scrapy.Spider):
                     dont_filter=True
                 )
             while True:
-                if 0 == self.r.scard("jufaanli:crawled"):
+                if 100 > self.r.scard("jufaanli:crawled"):
                     break
                 else:
                     self.logger.info("watting for cancel....")
