@@ -30,7 +30,7 @@ class CollectSpider(scrapy.Spider):
             'Accept-Encoding': 'gzip, deflate',
             'Content-Type': 'application/x-www-form-urlencoded',
             'Connection': 'keep-alive',
-            'Cookie': 'tf=c5455137943b642b18ee51913ec00a3d; BJYSESSION=1td6ku7qdjifphb18pib6qav40; is_remember=0; login_time=2019-04-20+15%3A10%3A57; t=8c36a7c25995731e57250bf357929467;',
+            'Cookie': 't=1755391248282a65ba557d3c070ae712; BJYSESSION=5ndtuujjt00r8qjo80li5pgi50; BJYSESSION=5ndtuujjt00r8qjo80li5pgi50; is_remember=0; login_time=2019-04-20+21%3A30%3A28; tf=f94bf7f1be58053a124089c543b5051b',
             'Accept-Language': 'zh-Hans-CN;q=1, en-US;q=0.9',
         },
         "ITEM_PIPELINES": {
@@ -48,20 +48,25 @@ class CollectSpider(scrapy.Spider):
     r = Redis(connection_pool=pool)
 
     def start_requests(self):
-        for i, sign in enumerate(pages[:], start=1):
-            url = f"https://www.jufaanli.com/JuFaMobile/User/collect?sign={sign}&version_no=3.0.1"
-            payload = {
-                "page": i,
-                "uid": "175648",
-                "version_no": "3.0.1",
-            }
-            yield Request(
-                url=url,
-                method="POST",
-                body=urlencode(payload),
-                dont_filter=True
-            )
-
+        while True:
+            for i, sign in enumerate(pages, start=1):
+                url = f"https://www.jufaanli.com/JuFaMobile/User/collect?sign={sign}&version_no=3.0.1"
+                payload = {
+                    "page": i,
+                    "uid": "176745",
+                    "version_no": "3.0.1",
+                }
+                yield Request(
+                    url=url,
+                    method="POST",
+                    body=urlencode(payload),
+                    dont_filter=True
+                )
+            while True:
+                if 0 < self.r.scard("jufaanli:crawled"):
+                    sleep(1)
+                else:
+                    break
 
     def parse(self, response):
         res = json.loads(response.body_as_unicode())

@@ -37,7 +37,7 @@ class CollectSpider(scrapy.Spider):
             crawled = self.r.spop("jufaanli:crawled", count=1000)
             if not crawled:
                 sleep(1)
-                self.logger.info("waitting")
+                # self.logger.info("waitting")
                 continue
             for each in crawled:
                 case_id = str(each, encoding="utf-8")

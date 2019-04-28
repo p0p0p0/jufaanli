@@ -30,7 +30,7 @@ class CollectSpider(scrapy.Spider):
     r = Redis(connection_pool=pool)
 
     base_url = "https://www.jufaanli.com/home/Collection/collectCases"
-    label_id = "257689"
+    label_id = None
 
     def start_requests(self):
         while True:
@@ -44,6 +44,7 @@ class CollectSpider(scrapy.Spider):
                     body=urlencode(payload),
                     dont_filter=True
                 )
+            break
 
     def parse(self, response):
         res = json.loads(response.body_as_unicode())

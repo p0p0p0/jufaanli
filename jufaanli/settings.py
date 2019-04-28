@@ -33,7 +33,7 @@ ROBOTSTXT_OBEY = False
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-COOKIES_ENABLED = False
+COOKIES_ENABLED = True
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
@@ -45,7 +45,7 @@ DEFAULT_REQUEST_HEADERS = {
     "accept-language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
     "cache-control": "no-cache",
     "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-    "cookie": "t=786c59fca9efb3deca7fa740e544fdf7; BJYSESSION=39qh046364mhugnk7vb565k3u2; is_remember=0; BJYSESSION=39qh046364mhugnk7vb565k3u2; keywords=%E7%A6%BB%E5%A9%9A; login_time=2019-04-20+19%3A20%3A31; tf=11cc3a714602a04217a51451bd39b44f",
+    # "cookie": "t=c898b92b5ed9d62c190b7d8773204f14; BJYSESSION=c01gc9cqd0l2d9tjc8jjdot9t5; is_remember=0; BJYSESSION=c01gc9cqd0l2d9tjc8jjdot9t5; login_time=2019-04-21+14%3A42%3A22; tf=1118fbe6be676182fd2238955f6b36da",
     "dnt": "1",
     "origin": "https://www.jufaanli.com",
     "pragma": "no-cache",
